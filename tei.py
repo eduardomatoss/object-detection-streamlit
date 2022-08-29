@@ -9,7 +9,7 @@ def handle_picture(picture):
 
 
 def detect_on_image(image):
-    bbox, label, conf = cv.detect_common_objects(image, confidence=0.5, enable_gpu=True)
+    bbox, label, conf = cv.detect_common_objects(image, confidence=0.2, model="yolov3-tiny", enable_gpu=True)
     return draw_bbox(image, bbox, label, conf), label
 
 
@@ -26,10 +26,8 @@ while run:
     img, label = handle_picture(frame)
     FRAME_WINDOW.image(frame)
 
-    if 'person' in label and 'clock' in label:
-        st.success('Successfully Registered!')
+    if "person" in label and "clock" in label:
+        st.success("Successfully Registered!")
         break
-    else:
-        st.error('Validation image error, please try again!')
 
 camera.release()
