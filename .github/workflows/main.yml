@@ -1,0 +1,22 @@
+name: main
+on:
+  push:
+    branches:
+      - main
+jobs:
+  main:
+    name: "Run Build"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running build for ${{ github.ref }} branch"
+
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Building the project
+        run: make docker/build
+
+      - name: Running lint/bandit/check-packages
+        run: make docker/verify

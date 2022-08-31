@@ -1,0 +1,19 @@
+name: pull request
+on: [pull_request]
+jobs:
+  pull_request:
+    name: "Pull Request"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running build and pull_request for ${{ github.ref }} branch"
+
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Building the project
+        run: make docker/build
+
+      - name: Running lint/bandit/check-packages
+        run: make docker/verify
