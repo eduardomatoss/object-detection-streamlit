@@ -10,8 +10,8 @@ services:
     volumes:
       - ".:/app"
     networks:
-      - db_nw
+      - network
 
 networks:
-  db_nw:
+  network:
     driver: bridge
