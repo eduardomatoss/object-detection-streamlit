@@ -6,7 +6,6 @@ image, captcha_text = create_captcha()
 
 
 def registration():
-
     form = st.form(key="form_registration")
     form.title("Form Registration")
     form.text_input("Name")

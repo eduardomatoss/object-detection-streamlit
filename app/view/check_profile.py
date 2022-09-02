@@ -6,7 +6,7 @@ import streamlit as st
 
 def detect_on_image(image):
     bbox, label, conf = cv.detect_common_objects(
-        image, confidence=0.2, model="yolov3-tiny", enable_gpu=True
+        image, confidence=0.2, model="yolov4-tiny", enable_gpu=True
     )
     return draw_bbox(image, bbox, label, conf), label
 
